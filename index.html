@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Music 220A - Gasoline Prices Over Time</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="https://d3js.org/topojson.v1.min.js"></script>
+		<script src="fp/datamaps.usa.min.js"></script>
+		<script src="fp/script.js"></script>
+		<style type="text/css">
+			#colorBar {
+				width: 10px;
+				height: 200px;
+				margin-right:40px;
+				background: #ff0000;
+				background: -moz-linear-gradient(top,  #ff0000 0%, #ffa500 25%, #ffff00 50%, #008000 75%, #008000 75%, #0000ff 100%);
+				background: -webkit-linear-gradient(top,  #ff0000 0%,#ffa500 25%,#ffff00 50%,#008000 75%,#008000 75%,#0000ff 100%);
+				background: linear-gradient(to bottom,  #ff0000 0%,#ffa500 25%,#ffff00 50%,#008000 75%,#008000 75%,#0000ff 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#0000ff',GradientType=0 );
+			}
+		</style>
+	</head>
+<body>
+	<div style="margin-left:auto; margin-right:auto; width:1200px; display:block;">
+		<div style="width:100%; text-align:center; margin-bottom: 20px;">
+			<span style="font-size:2em; font-weight:bold">Gasoline Prices Over Time</span><br/>
+			<span>Benjamin Williams - Music 220A Final Project</span>
+		</div>
+		<div style="float:left; position:relative; margin-left:150px; z-index:110">
+			<button id="btnPlay" onclick="play();">Play</button>
+			<button onclick="reset();">Reset</button><br/>
+			<label><input type="checkbox" id="cbPlayNational" onclick="toggleState('US');" checked></input>Play National Average?</label>
+		</div>
+		<div style="float:right; margin-right:150px; text-align:right;">
+			<span id="spanMonth"></span>
+			<span id="spanYear"></span><br/>
+			<span id="spanPrice"></span>
+		</div>
+		<div style="position:relative;">
+			<div style="position:absolute; top:40%; right:20px; padding:5px;">
+				<div id="colorBar"></div>
+				<span style="position:absolute; top:5px; right:5px; font-size:14px;">$4.25</span>
+				<span style="position:absolute; bottom:5px; right:5px; font-size:14px;">$0.25</span>
+			</div>
+			<div id="mapContainer" style="position: relative; width: 1200px; height: 675px; z-index:100"></div>
+		</div>
+		<div>
+			<p>This is a combined visualization/sonification of <a href="http://www.eia.gov/dnav/pet/pet_pri_allmg_a_EPM0_PTC_Dpgal_m.htm">the average price of gasoline</a> sold through retail outlets from 1984-2011, in dollars per gallon. (Gaps in the data set were interpolated.) Time progression can be controlled using the buttons in the top left. Individual states can be included/excluded in the sonification by clicking them. A separate triangle tone will play for each state, as well as for a national average of the data: the intent is to be able to listen to the beating/etc between tones for subtle differences between states.</p>
+			<p>This page was developed and tested in Google Chrome. If anything isn't working, try switching to Chrome/updating your browser.</p>
+		</div>
+	</div>
+	<script>
+		setup('mapContainer');
+	</script>
+</body>
+</html>
